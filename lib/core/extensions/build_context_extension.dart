@@ -11,29 +11,6 @@ extension FocusX on BuildContext {
   static void clearPrimaryFocus() => FocusManager.instance.primaryFocus?.unfocus();
 }
 
-extension MediaQueryX on BuildContext {
-  MediaQueryData get mediaQuery => MediaQuery.of(this);
-
-  double get topPadding => mediaQuery.padding.top;
-
-  double get bottomPadding => mediaQuery.padding.bottom;
-
-  double get screenWidth => mediaQuery.size.width;
-
-  double get screenHeight => mediaQuery.size.height;
-}
-
-extension DialogX on BuildContext {
-  Future<T?> showGeneralDialog<T>({
-    required Widget child,
-  }) {
-    return showDialog<T>(
-      context: this,
-      builder: (_) => child,
-    );
-  }
-}
-
 extension ModalBottomSheetX on BuildContext {
   Future<T?> showGeneralBottomSheet<T>({
     required Widget child,

@@ -3,13 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:incode_test_task/data/source/remote/network_errors.dart';
 
 class NetworkService {
-  NetworkService({
+  NetworkService(
+    String baseUrl, {
     int? connectTimeout,
     int? receiveTimeout,
     int? sendTimeout,
     Map<String, dynamic>? headers,
     List<Interceptor>? interceptors,
-  });
+  }) {
+    dio = Dio(
+      BaseOptions(
+        baseUrl: baseUrl,
+        headers: headers,
+        connectTimeout: Duration(milliseconds: connectTimeout ?? 0),
+        receiveTimeout: Duration(milliseconds: receiveTimeout ?? 0),
+        sendTimeout: Duration(milliseconds: sendTimeout ?? 0),
+      ),
+    );
+  }
 
   @protected
   late Dio dio;
@@ -17,13 +28,13 @@ class NetworkService {
   ///Base method for communication between client and server.
   ///Supports CRUD operations with [HttpMethod].
   Future<T> request<T>(
-      String path,
-      HttpMethod method, {
-        dynamic data,
-        Map<String, dynamic>? headers,
-        Map<String, dynamic>? queryParameters,
-        required T Function(Response<dynamic>) onParse,
-      }) async {
+    String path,
+    HttpMethod method, {
+    dynamic data,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? queryParameters,
+    required T Function(Response<dynamic>) onParse,
+  }) async {
     try {
       final options = Options(method: method.name.toUpperCase());
       if (headers != null) options.headers?.addAll(headers);

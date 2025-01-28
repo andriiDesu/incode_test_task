@@ -16,26 +16,35 @@ class MainBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final strings = context.strings;
 
-    return BottomNavigationBar(
-      currentIndex: currentIndex,
-      onTap: onTapItem,
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.black,
-      unselectedItemColor: Colors.grey,
-      selectedLabelStyle: Styles.selectedNavBar,
-      unselectedLabelStyle: Styles.unselectedNavBar,
-      items: [
-        BottomNavigationBarItem(
-          activeIcon: _ItemIcon(Icons.home),
-          icon: _ItemIcon(Icons.home_outlined),
-          label: strings.home,
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(color: Colors.black),
         ),
-        BottomNavigationBarItem(
-          activeIcon: _ItemIcon(Icons.view_list),
-          icon: _ItemIcon(Icons.view_list_outlined),
-          label: strings.list,
-        ),
-      ],
+      ),
+      child: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: onTapItem,
+        elevation: 0,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.transparent,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        selectedLabelStyle: Styles.selectedNavBar,
+        unselectedLabelStyle: Styles.unselectedNavBar,
+        items: [
+          BottomNavigationBarItem(
+            activeIcon: _ItemIcon(Icons.home),
+            icon: _ItemIcon(Icons.home_outlined),
+            label: strings.home,
+          ),
+          BottomNavigationBarItem(
+            activeIcon: _ItemIcon(Icons.view_list),
+            icon: _ItemIcon(Icons.view_list_outlined),
+            label: strings.list,
+          ),
+        ],
+      ),
     );
   }
 }

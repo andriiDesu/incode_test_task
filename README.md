@@ -55,6 +55,9 @@ Before you begin, ensure you have the latest version of Flutter installed:
 4. Run Realm code generation to build database models:
    dart run realm generate
 
+5. Generate localization files:
+   flutter gen-l10n
+
 ### Build and Run
 
 1. Connect your device or start an emulator.

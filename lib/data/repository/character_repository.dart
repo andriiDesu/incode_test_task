@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:daily_extensions/daily_extensions.dart';
-import 'package:incode_test_task/core/di/components/database_service_component.dart';
 import 'package:incode_test_task/data/model/local/character_dbo.dart';
 import 'package:incode_test_task/data/model/local/guesses_dbo.dart';
 import 'package:incode_test_task/data/source/local/database.dart';

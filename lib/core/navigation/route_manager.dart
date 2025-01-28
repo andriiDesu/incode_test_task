@@ -12,7 +12,7 @@ class RouteManager {
 
   static GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: MainScreen.routeName,
+    initialLocation: HomeScreen.routeName,
     debugLogDiagnostics: true,
     routes: [
       ShellRoute(

@@ -38,23 +38,16 @@ abstract class BaseLayoutState<S extends BaseState, C extends BaseCubit<S>, L ex
       },
       child: BlocBuilder<ProgressCubit, bool>(
         bloc: cubit.progressCubit,
-        builder: (_, inProgress) => Stack(
-          children: [
-            PopScope(
-              canPop: inProgress,
-              child: GestureDetector(
-                onTap: () => context.clearFocus(),
-                child: Scaffold(
-                  appBar: buildAppBar(context),
-                  backgroundColor: Colors.white,
-                  body: SafeArea(child: buildLayout(context)),
-                ),
-              ),
+        builder: (_, inProgress) => PopScope(
+          canPop: inProgress,
+          child: GestureDetector(
+            onTap: () => context.clearFocus(),
+            child: Scaffold(
+              appBar: buildAppBar(context),
+              backgroundColor: Colors.white,
+              body: SafeArea(child: buildLayout(context)),
             ),
-            if(inProgress) CircularProgressIndicator(
-              color: Colors.blue,
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -80,8 +73,6 @@ abstract class BaseLayoutState<S extends BaseState, C extends BaseCubit<S>, L ex
         Widget? child,
       }) {
     ///Placeholder Text widget, replace with any default page
-    return context.showGeneralBottomSheet<void>(
-      child: child ?? Text(message ?? '')
-    );
+    return context.showGeneralBottomSheet<void>(child: child ?? Text(message ?? ''));
   }
 }

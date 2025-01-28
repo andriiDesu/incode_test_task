@@ -1,4 +1,5 @@
 import 'package:incode_test_task/data/model/local/character_dbo.dart';
+import 'package:incode_test_task/modules/home/models/character_ui.dart';
 
 class CharacterDomain {
   CharacterDomain({
@@ -7,8 +8,9 @@ class CharacterDomain {
     required this.house,
     required this.species,
     required this.actor,
-    required this.dateOfBirth,
     required this.image,
+    required this.isSuccess,
+    this.dateOfBirth,
   });
 
   final String id;
@@ -16,8 +18,9 @@ class CharacterDomain {
   final String house;
   final String species;
   final String actor;
-  final String dateOfBirth;
+  final String? dateOfBirth;
   final String image;
+  final bool isSuccess;
 }
 
 extension CharacterDomainMapper on CharacterDbo {
@@ -30,6 +33,22 @@ extension CharacterDomainMapper on CharacterDbo {
       actor: actor,
       dateOfBirth: dateOfBirth,
       image: image,
+      isSuccess: isSuccess,
+    );
+  }
+}
+
+extension CharacterUiMapper on CharacterUi {
+  CharacterDomain toDomain() {
+    return CharacterDomain(
+      id: id,
+      name: name,
+      house: house,
+      species: species,
+      actor: actor,
+      dateOfBirth: dateOfBirth,
+      image: image,
+      isSuccess: isSuccess,
     );
   }
 }

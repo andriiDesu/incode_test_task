@@ -16,8 +16,9 @@ class $CharacterDbo {
   late final String species;
   @Indexed(RealmIndexType.fullText)
   late final String actor;
-  late final String dateOfBirth;
   late final String image;
+  late final bool isSuccess;
+  late String? dateOfBirth;
 }
 
 extension CharacterDtoMapper on CharacterDto {
@@ -28,8 +29,9 @@ extension CharacterDtoMapper on CharacterDto {
       house,
       species,
       actor,
-      dateOfBirth,
       image,
+      false,
+      dateOfBirth: dateOfBirth,
     );
   }
 }
@@ -42,8 +44,9 @@ extension CharacterDomainMapper on CharacterDomain {
       house,
       species,
       actor,
-      dateOfBirth,
       image,
+      isSuccess,
+      dateOfBirth: dateOfBirth,
     );
   }
 }

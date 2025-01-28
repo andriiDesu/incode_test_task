@@ -11,9 +11,9 @@ CharacterDto _$CharacterDtoFromJson(Map<String, dynamic> json) => CharacterDto(
       name: json['name'] as String,
       species: json['species'] as String,
       house: json['house'] as String,
-      dateOfBirth: json['dateOfBirth'] as String,
       actor: json['actor'] as String,
       image: json['image'] as String,
+      dateOfBirth: json['dateOfBirth'] as String?,
     );
 
 Map<String, dynamic> _$CharacterDtoToJson(CharacterDto instance) =>

@@ -9,9 +9,9 @@ class CharacterDto {
     required this.name,
     required this.species,
     required this.house,
-    required this.dateOfBirth,
     required this.actor,
     required this.image,
+    this.dateOfBirth,
   });
 
   factory CharacterDto.fromJson(Map<String, dynamic> json) => _$CharacterDtoFromJson(json);
@@ -26,7 +26,7 @@ class CharacterDto {
   @JsonKey(name: "house")
   String house;
   @JsonKey(name: "dateOfBirth")
-  String dateOfBirth;
+  String? dateOfBirth;
   @JsonKey(name: "actor")
   String actor;
   @JsonKey(name: "image")

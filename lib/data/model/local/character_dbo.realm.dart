@@ -15,16 +15,18 @@ class CharacterDbo extends $CharacterDbo
     String house,
     String species,
     String actor,
-    String dateOfBirth,
     String image,
-  ) {
+    bool isSuccess, {
+    String? dateOfBirth,
+  }) {
     RealmObjectBase.set(this, 'id', id);
     RealmObjectBase.set(this, 'name', name);
     RealmObjectBase.set(this, 'house', house);
     RealmObjectBase.set(this, 'species', species);
     RealmObjectBase.set(this, 'actor', actor);
-    RealmObjectBase.set(this, 'dateOfBirth', dateOfBirth);
     RealmObjectBase.set(this, 'image', image);
+    RealmObjectBase.set(this, 'isSuccess', isSuccess);
+    RealmObjectBase.set(this, 'dateOfBirth', dateOfBirth);
   }
 
   CharacterDbo._();
@@ -55,15 +57,21 @@ class CharacterDbo extends $CharacterDbo
   set actor(String value) => throw RealmUnsupportedSetError();
 
   @override
-  String get dateOfBirth =>
-      RealmObjectBase.get<String>(this, 'dateOfBirth') as String;
-  @override
-  set dateOfBirth(String value) => throw RealmUnsupportedSetError();
-
-  @override
   String get image => RealmObjectBase.get<String>(this, 'image') as String;
   @override
   set image(String value) => throw RealmUnsupportedSetError();
+
+  @override
+  bool get isSuccess => RealmObjectBase.get<bool>(this, 'isSuccess') as bool;
+  @override
+  set isSuccess(bool value) => throw RealmUnsupportedSetError();
+
+  @override
+  String? get dateOfBirth =>
+      RealmObjectBase.get<String>(this, 'dateOfBirth') as String?;
+  @override
+  set dateOfBirth(String? value) =>
+      RealmObjectBase.set(this, 'dateOfBirth', value);
 
   @override
   Stream<RealmObjectChanges<CharacterDbo>> get changes =>
@@ -84,8 +92,9 @@ class CharacterDbo extends $CharacterDbo
       'house': house.toEJson(),
       'species': species.toEJson(),
       'actor': actor.toEJson(),
-      'dateOfBirth': dateOfBirth.toEJson(),
       'image': image.toEJson(),
+      'isSuccess': isSuccess.toEJson(),
+      'dateOfBirth': dateOfBirth.toEJson(),
     };
   }
 
@@ -99,8 +108,8 @@ class CharacterDbo extends $CharacterDbo
         'house': EJsonValue house,
         'species': EJsonValue species,
         'actor': EJsonValue actor,
-        'dateOfBirth': EJsonValue dateOfBirth,
         'image': EJsonValue image,
+        'isSuccess': EJsonValue isSuccess,
       } =>
         CharacterDbo(
           fromEJson(id),
@@ -108,8 +117,9 @@ class CharacterDbo extends $CharacterDbo
           fromEJson(house),
           fromEJson(species),
           fromEJson(actor),
-          fromEJson(dateOfBirth),
           fromEJson(image),
+          fromEJson(isSuccess),
+          dateOfBirth: fromEJson(ejson['dateOfBirth']),
         ),
       _ => raiseInvalidEJson(ejson),
     };
@@ -129,8 +139,9 @@ class CharacterDbo extends $CharacterDbo
           indexType: RealmIndexType.fullText),
       SchemaProperty('actor', RealmPropertyType.string,
           indexType: RealmIndexType.fullText),
-      SchemaProperty('dateOfBirth', RealmPropertyType.string),
       SchemaProperty('image', RealmPropertyType.string),
+      SchemaProperty('isSuccess', RealmPropertyType.bool),
+      SchemaProperty('dateOfBirth', RealmPropertyType.string, optional: true),
     ]);
   }();
 

@@ -1,0 +1,1 @@
+enum HouseEnum { Gryffindor, Slytherin, Hufflepuff, Ravenclaw, none, }

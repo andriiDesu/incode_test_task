@@ -14,8 +14,8 @@ class CharacterApi {
       _charactersPath,
       HttpMethod.get,
       onParse: (response) {
-        final responseData = response.data as Map<String, dynamic>;
-        return responseData.values.mapToList((character) => CharacterDto.fromJson(character));
+        final responseData = response.data as List<dynamic>;
+        return responseData.mapToList((character) => CharacterDto.fromJson(character));
       },
     );
   }

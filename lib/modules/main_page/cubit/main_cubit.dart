@@ -10,8 +10,6 @@ class MainCubit extends BaseCubit<MainState> {
   MainCubit() : super(const MainState());
 
   void onPageChanged(int index) {
-    emit(MainState(currentIndex: index));
-
     if (state.currentIndex != index) {
       switch (index) {
         case _homePageIndex:
@@ -22,5 +20,7 @@ class MainCubit extends BaseCubit<MainState> {
           break;
       }
     }
+
+    emit(MainState(currentIndex: index));
   }
 }

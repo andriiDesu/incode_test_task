@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:incode_test_task/modules/home/view/home_screen.dart';
+import 'package:incode_test_task/modules/list/view/list_screen.dart';
 import 'package:incode_test_task/modules/main_page/view/main_screen.dart';
 
 class RouteManager {
@@ -26,10 +27,10 @@ class RouteManager {
             path: HomeScreen.routeName,
             builder: (_, state) => HomeScreen(),
           ),
-          // GoRoute(
-          //   path: ListScreen.routeName,
-          // builder: (_, state) => HomeScreen(),
-          // ),
+          GoRoute(
+            path: ListScreen.routeName,
+            builder: (_, state) => ListScreen(),
+          ),
         ],
       ),
     ],

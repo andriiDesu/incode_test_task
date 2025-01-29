@@ -15,12 +15,20 @@ class Database {
 
   Stream<GuessesDbo> getGuessesStream() =>
       _realm.find<GuessesDbo>(0)?.changes.map(
-            (guesses) => guesses.object,
-          ) ??
+        (guesses) {
+          final d = guesses.object;
+          if (d.guesses.first.isSuccess) {
+            print('');
+          }
+          return d;
+        },
+      ) ??
       Stream.value(GuessesDbo(0));
 
   void updateGuess(GuessesDbo guess) => _realm.write(
-        () => _realm.add<GuessesDbo>(guess, update: true),
+        () {
+          _realm.add<GuessesDbo>(guess, update: true);
+        },
       );
 
   void clear() => _realm.write(

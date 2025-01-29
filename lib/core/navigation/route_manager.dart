@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:incode_test_task/modules/details/view/details_screen.dart';
 import 'package:incode_test_task/modules/home/view/home_screen.dart';
 import 'package:incode_test_task/modules/list/view/list_screen.dart';
 import 'package:incode_test_task/modules/main_page/view/main_screen.dart';
@@ -32,6 +33,12 @@ class RouteManager {
             builder: (_, state) => ListScreen(),
           ),
         ],
+      ),
+      GoRoute(
+        path: DetailsScreen.routeName,
+        builder: (_, state) => DetailsScreen(
+          arguments: state.extra as DetailsScreenArguments,
+        ),
       ),
     ],
   );

@@ -1,6 +1,8 @@
+import 'package:incode_test_task/core/navigation/route_state.dart';
 import 'package:incode_test_task/data/repository/character_repository.dart';
 import 'package:incode_test_task/domain/models/guesses_domain.dart';
 import 'package:incode_test_task/modules/common/cubit/base_cubit.dart';
+import 'package:incode_test_task/modules/home/models/character_ui.dart';
 import 'package:incode_test_task/modules/home/models/guesses_ui.dart';
 
 part 'list_state.dart';
@@ -13,6 +15,13 @@ class ListCubit extends BaseCubit<ListState> {
   final CharacterRepository _characterRepository;
 
   void resetGuesses() => _resetGuesses();
+
+  void navigateToDetails({
+    required CharacterUi character,
+  }) =>
+      addRoute(DetailsRouteState(character));
+
+  void navigateBack() => addRoute(BackRouteState());
 
   void _watchGuessesStream() {
     subscribe<GuessesDomain>(

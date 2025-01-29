@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:incode_test_task/core/extensions/build_context_extension.dart';
 import 'package:incode_test_task/domain/enums/house_enum.dart';
 import 'package:incode_test_task/modules/home/cubit/home_cubit.dart';
 import 'package:incode_test_task/resources/gen/assets.gen.dart';
@@ -57,7 +58,7 @@ class HouseGuessInput extends StatelessWidget {
             ),
             alignment: Alignment.center,
             child: Text(
-              'Not in house',
+              context.strings.notInHouse,
               style: Styles.guessType,
             ),
           ),

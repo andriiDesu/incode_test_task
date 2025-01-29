@@ -20,6 +20,28 @@ class CharacterUi {
   final String? dateOfBirth;
   final String image;
   final bool isSuccess;
+
+  CharacterUi copyWith({
+    String? id,
+    String? name,
+    String? house,
+    String? species,
+    String? actor,
+    String? dateOfBirth,
+    String? image,
+    bool? isSuccess,
+  }) {
+    return CharacterUi(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      house: house ?? this.house,
+      species: species ?? this.species,
+      actor: actor ?? this.actor,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      image: image ?? this.image,
+      isSuccess: isSuccess ?? this.isSuccess,
+    );
+  }
 }
 
 extension CharacterUiMapper on CharacterDomain {

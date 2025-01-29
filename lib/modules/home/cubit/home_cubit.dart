@@ -55,10 +55,11 @@ class HomeCubit extends BaseCubit<HomeState> {
     if (state.character == null) return;
 
     var guesses = state.guesses;
-    final character = state.character!;
+    var character = state.character!;
 
     if (house.name == character.house || (house.index == 4 && character.house == '')) {
       guesses = guesses.copyWith(successCount: guesses.successCount + 1);
+      character = character.copyWith(isSuccess: true);
     } else {
       guesses = guesses.copyWith(failureCount: guesses.failureCount + 1);
     }

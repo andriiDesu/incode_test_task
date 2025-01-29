@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:incode_test_task/core/extensions/build_context_extension.dart';
 import 'package:incode_test_task/modules/common/view/base_layout.dart';
+import 'package:incode_test_task/modules/common/view/widgets/character_image.dart';
+import 'package:incode_test_task/modules/common/view/widgets/default_appbar.dart';
 import 'package:incode_test_task/modules/common/view/widgets/guesses_block.dart';
 import 'package:incode_test_task/modules/home/cubit/home_cubit.dart';
 import 'package:incode_test_task/modules/home/view/widget/house_guess_input.dart';
@@ -19,27 +22,9 @@ class _HomeLayoutState extends BaseLayoutState<HomeState, HomeCubit, HomeLayout>
 
   @override
   PreferredSizeWidget? buildAppBar(BuildContext context) {
-    return AppBar(
-      title: Text('Home Screen'),
-      centerTitle: true,
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      toolbarHeight: 70,
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 24),
-          child: GestureDetector(
-            onTap: cubit.resetGuesses,
-            child: Text('Reset'),
-          ),
-        ),
-      ],
-      bottom: PreferredSize(
-        preferredSize: Size.fromHeight(1),
-        child: Divider(
-          color: Colors.black,
-        ),
-      ),
+    return DefaultAppbar(
+      resetGuesses: cubit.resetGuesses,
+      title: context.strings.homeScreen,
     );
   }
 
@@ -71,10 +56,10 @@ class _HomeLayoutState extends BaseLayoutState<HomeState, HomeCubit, HomeLayout>
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.network(
-                      state.character!.image,
-                      errorBuilder: (_, __, ___) => _loadingImageBuilder(),
-                      loadingBuilder: (_, __, ___) => _loadingImageBuilder(),
+                    Text(state.character!.house),
+                    CharacterImage(
+                      loaderHeight: 200,
+                      url: state.character!.image,
                     ),
                     Text(
                       state.character!.name,
@@ -87,16 +72,6 @@ class _HomeLayoutState extends BaseLayoutState<HomeState, HomeCubit, HomeLayout>
           ),
           HouseGuessInput(),
         ],
-      ),
-    );
-  }
-
-  Widget _loadingImageBuilder() {
-    return Container(
-      height: 200,
-      alignment: Alignment.center,
-      child: Text(
-        'No image available',
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:incode_test_task/modules/home/models/character_ui.dart';
 
 @immutable
 class RouteState {}
@@ -10,7 +11,7 @@ class HomeRouteState extends RouteState {}
 class ListRouteState extends RouteState {}
 
 class DetailsRouteState extends RouteState {
-  DetailsRouteState(this.isGuessCorrect);
+  DetailsRouteState(this.character);
 
-  final bool isGuessCorrect;
+  final CharacterUi character;
 }

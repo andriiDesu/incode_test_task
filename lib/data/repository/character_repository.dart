@@ -37,9 +37,14 @@ class CharacterRepository {
     return characters[random.nextInt(characters.length)].toDomain();
   }
 
-  Stream<GuessesDomain> getGuessesStream() => _database.getGuessesStream().map(
-        (guesses) => guesses.toDomain(),
+  Stream<GuessesDomain> getGuessesStream() {
+    return _database.getGuessesStream().map(
+        (guesses) {
+          final guess= guesses.toDomain();
+          return guess;
+        },
       );
+  }
 
   void reset() {
     _database.clear();

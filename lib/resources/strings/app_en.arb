@@ -1,5 +1,10 @@
 {
     "somethingWentWrong": "Something went wrong",
     "home": "Home",
-    "list": "List"
+    "list": "List",
+    "listScreen": "List Screen",
+    "homeScreen": "Home Screen",
+    "reset": "Reset",
+    "noImageAvailable": "No image available",
+    "notInHouse": "Not in house"
 }
